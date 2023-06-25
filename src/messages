@@ -1,0 +1,16 @@
+Messaggio chat :                                        Messaggio chat ripetuto da GW:
+
+chat/QRZ/lat/lon/Messaggio                              chat/qrz/lat/lon/messaggio/GW
+
+Messaggio diretto :
+
+diretta/qrz/lat/lon/Messaggio
+
+Messaggio dal server:
+
+chat/qrz/lat/lon/Messaggio/GW
+
+
+Messaggio inviato al server:
+
+chat/qrz/lat/lon/Messaggio/GW
