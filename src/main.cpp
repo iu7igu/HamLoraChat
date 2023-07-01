@@ -312,7 +312,7 @@ void loop() {
         comando = BT.readStringUntil('\n');
         comando.remove(comando.length()-1, 1);
         
-        if (comando == "#menu"){
+        if (comando == "/menu"){
           BT.println("Menu di configurazione");
           BT.println("/gps on/off : Attiva#disattiva il gps");
           BT.println("/beacon on/off : Attiva#disattiva beacon");
