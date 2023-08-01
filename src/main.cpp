@@ -67,7 +67,7 @@ AXP20X_Class axp;
 String qrz = "IU7IGU-10";
 const char* beacon_message = "HamLoraChat info: www.github.com/iu7igu/HamLoraChat";
 const bool beacon = false;
-const int beacon_time = 5;  // In minuti
+const int beacon_time = 5;  // In minute
 const bool gps = true;
 const long lora_freq = 433775000;
 const int lora_power = 20;
@@ -76,6 +76,8 @@ const float lora_bandw = 125000;
 const bool oled = true; 
 const char* locatore = "JN70BN";
 const bool diretta = false;
+
+
 
 
 bool newmex = false;
@@ -312,7 +314,7 @@ void loop() {
         comando = BT.readStringUntil('\n');
         comando.remove(comando.length()-1, 1);
         
-        if (comando == "#menu"){
+        if (comando == "/menu"){
           BT.println("Menu di configurazione");
           BT.println("/gps on/off : Attiva#disattiva il gps");
           BT.println("/beacon on/off : Attiva#disattiva beacon");
