@@ -140,6 +140,7 @@ void updatelcd(){
 
 
 void beacon_tx(){
+  if(pref.getBool("gps", false)){
     if (gpsmodule.location.isValid() || gpsmodule.satellites.value() > 0){
       String posizione;
       float lati, lon;
@@ -153,6 +154,19 @@ void beacon_tx(){
       display.println("TX");
       display.display();
     }}
+  else{
+    String posizione;
+    char locat[10];
+    pref.getString("locatore").toCharArray(locat, 20);
+    posizione = String(mh2lat(locat), 6) + "#" +  String(mh2lon(locat), 6);
+    LoRa.beginPacket();
+    LoRa.print("beacon#" + qrz + "#" + posizione + "#" + pref.getString("beacon_message"));
+    LoRa.endPacket(true);
+    display.setCursor(80,49);
+    display.println("TX");
+    display.display();
+  }
+}
 
 
 void initvolt(){
@@ -366,7 +380,7 @@ void loop() {
               BT.println("Beacon time " + bctime + " minuti");
           }
         }
-        else if (comando.indexOf("#locatore") != -1){
+        else if (comando.indexOf("/locatore") != -1){
           String locatore = splitta(comando, ' ', 1);
           if(isDigit(locatore.charAt(2)) and isDigit(locatore.charAt(3))){
               pref.putString("locatore", locatore);
