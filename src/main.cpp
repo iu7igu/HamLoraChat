@@ -330,8 +330,8 @@ void loop() {
         
         if (comando == "/menu"){
           BT.println("Menu di configurazione");
-          BT.println("/gps on/off : Attiva#disattiva il gps");
-          BT.println("/beacon on/off : Attiva#disattiva beacon");
+          BT.println("/gps on/off : Attiva/disattiva il gps");
+          BT.println("/beacon on/off : Attiva/disattiva beacon");
           BT.println("/beacontime 5 : Modifica minuti delay beacon");
           BT.println("/freq 433775000 : Modifica frequenza Lora(richiede riavvio)");
           BT.println("/locatore JN10BN : Modifica il locatore");
@@ -376,7 +376,7 @@ void loop() {
         else if(comando.indexOf("/beacontime") != -1){
           String bctime = splitta(comando, ' ', 1);
           if (isNumeric(bctime)){
-              pref.putFloat("beacon_time", bctime.toFloat());
+              pref.putInt("beacon_time", bctime.toInt());
               BT.println("Beacon time " + bctime + " minuti");
           }
         }
